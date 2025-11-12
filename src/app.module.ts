@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { DatabaseModule } from './database/database.module';
 import { AirByteServiceModule } from './air_byte_service/air_byte_service.module';
 import { EtlModule } from './etl/etl.module';
+import { DynamicDatabaseModule } from './dynamic_db_instance/dynamic_db_instance.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { EtlModule } from './etl/etl.module';
     AirByteServiceModule,
     AirByteServiceModule,
     EtlModule,
+    DynamicDatabaseModule,
   ],
   controllers: [AppController],
   providers: [AppService],
