@@ -2,6 +2,10 @@ import { Logger, Module, OnModuleInit } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Sequelize } from 'sequelize-typescript';
+import { UserModel } from './models/user.model';
+import { DbStoreModel } from './models/db-store.model';
+import { RoleModel } from './models/role.model';
+import { OrgModel } from './models/org.model';
 
 @Module({
   imports: [
@@ -15,19 +19,16 @@ import { Sequelize } from 'sequelize-typescript';
         username: configService.get('DATABASE_USER'),
         password: configService.get('DATABASE_PASSWORD'),
         database: configService.get('DATABASE_NAME'),
-        models: [],
+        models: [UserModel, DbStoreModel, RoleModel, OrgModel],
         query: { raw: true },
         synchronize: false,
         logging: false,
         autoLoadModels: true,
-        dialectOptions: {
-          multipleStatements: true,
-          useUTC: false,
-        },
       }),
     }),
-    SequelizeModule.forFeature([]),
+    SequelizeModule.forFeature([UserModel, DbStoreModel, RoleModel, OrgModel]),
   ],
+  exports: [SequelizeModule],
 })
 export class DatabaseModule implements OnModuleInit {
   constructor(private sequelize: Sequelize) {}

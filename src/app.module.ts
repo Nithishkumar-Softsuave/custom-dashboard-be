@@ -4,9 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { DatabaseModule } from './database/database.module';
-import { AirByteServiceModule } from './air_byte_service/air_byte_service.module';
-import { EtlModule } from './etl/etl.module';
-import { DynamicDatabaseModule } from './dynamic_db_instance/dynamic_db_instance.module';
+import { AdminSettingsModule } from './admin-settings/admin-settings.module';
 
 @Module({
   imports: [
@@ -15,10 +13,7 @@ import { DynamicDatabaseModule } from './dynamic_db_instance/dynamic_db_instance
     }),
     AuthModule,
     DatabaseModule,
-    AirByteServiceModule,
-    AirByteServiceModule,
-    EtlModule,
-    DynamicDatabaseModule,
+    AdminSettingsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
